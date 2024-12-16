@@ -1,6 +1,6 @@
 // quiz.js
 
-import questions from "./questions.js"; // Import the questions array
+import questions from "./questions.js";
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -8,7 +8,7 @@ let score = 0;
 // Function to load the current question
 function loadQuestion() {
   const question = questions[currentQuestionIndex];
-  return question; // Return the current question to be displayed by UI
+  return question;
 }
 
 // Function to handle the user's answer

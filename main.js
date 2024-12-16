@@ -1,40 +1,68 @@
 // main.js
 
 import { loadQuestion, handleAnswer, getScore, nextQuestion } from "./quiz.js";
-import { updateQuestionInUI, updateProgress, showFinalScore } from "./ui.js";
+import {
+  updateQuestionInUI,
+  updateProgress,
+  showFinalScore,
+  highlightAnswer,
+  updateNextButton,
+  restartQuiz,
+} from "./ui.js";
 
+const totalQuestions = 3; // Update this if you add more questions
 let currentQuestion;
+let selectedAnswer = null; // Local variable to store the selected answer
+let currentQuestionIndex = 0;
 
-// Function to start the quiz
 function startQuiz() {
-  // Load the first question
+  console.log("Starting quiz...");
   currentQuestion = loadQuestion();
+  console.log(currentQuestion); // Log question data
   updateQuestionInUI(currentQuestion);
-  updateProgress(0, 3); // Assuming there are 3 questions
+  updateProgress(currentQuestionIndex, totalQuestions);
+  updateNextButton(false); // Disable Next button initially until an answer is selected
 }
 
-// Function to handle the choice click
 function handleChoiceClick(selectedIndex) {
-  // Handle the answer
-  handleAnswer(selectedIndex);
+  console.log("User selected index: ", selectedIndex);
+  selectedAnswer = selectedIndex; // Set the selected answer
+  handleAnswer(selectedAnswer);
 
-  // Move to the next question or show the final score
+  const isCorrect = selectedAnswer === currentQuestion.correctAnswerIndex;
+  highlightAnswer(selectedAnswer, isCorrect);
+
   const next = nextQuestion();
   if (next) {
     currentQuestion = next;
     updateQuestionInUI(currentQuestion);
+    updateProgress(currentQuestionIndex, totalQuestions);
+    updateNextButton(currentQuestionIndex === totalQuestions - 1);
   } else {
     const score = getScore();
-    showFinalScore(score, 3); // Show the final score when all questions are answered
+    showFinalScore(score, totalQuestions);
+    updateNextButton(true); // Disable further clicking after finishing quiz
   }
 }
 
-// Initialize the quiz on page load
 document.addEventListener("DOMContentLoaded", () => {
   startQuiz();
 
   const nextButton = document.getElementById("next-button");
   nextButton.addEventListener("click", () => {
-    handleChoiceClick(currentQuestion);
+    if (currentQuestionIndex === totalQuestions - 1) {
+      const score = getScore();
+      showFinalScore(score, totalQuestions);
+    } else {
+      handleChoiceClick(selectedAnswer);
+    }
+  });
+
+  const restartButton = document.getElementById("restart-button");
+  restartButton.addEventListener("click", () => {
+    console.log("Restarting quiz...");
+    restartQuiz();
+    currentQuestionIndex = 0; // Reset question index
+    startQuiz();
   });
 });

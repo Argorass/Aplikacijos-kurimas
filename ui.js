@@ -1,23 +1,24 @@
 // ui.js
 
-// Function to update the question in the HTML
 function updateQuestionInUI(question) {
   const questionText = document.getElementById("question-text");
   const choicesList = document.getElementById("choices");
 
   questionText.textContent = question.question;
-
-  // Clear previous choices
   choicesList.innerHTML = "";
+
   question.choices.forEach((choice, index) => {
     const choiceItem = document.createElement("li");
     choiceItem.textContent = choice;
-    choiceItem.addEventListener("click", () => handleChoiceClick(index)); // Handle answer click
+    choiceItem.classList.add("choice-item");
+    choiceItem.addEventListener("click", () => {
+      // Handle the answer selection here
+      handleChoiceClick(index); // Call this function from main.js
+    });
     choicesList.appendChild(choiceItem);
   });
 }
 
-// Function to update the progress
 function updateProgress(currentIndex, totalQuestions) {
   const progressText = document.getElementById("progress-text");
   const progressBar = document.getElementById("progress-bar");
@@ -30,10 +31,38 @@ function updateProgress(currentIndex, totalQuestions) {
   }%"></span>`;
 }
 
-// Function to show the final score
 function showFinalScore(score, totalQuestions) {
-  alert(`Quiz Over! Your final score is: ${score} / ${totalQuestions}`);
+  const resultsContainer = document.getElementById("results-container");
+  const finalScore = document.getElementById("final-score");
+
+  resultsContainer.classList.remove("hidden");
+  finalScore.textContent = `You got ${score} out of ${totalQuestions} correct!`;
 }
 
-// Export UI functions for use in the main.js
-export { updateQuestionInUI, updateProgress, showFinalScore };
+function highlightAnswer(selectedIndex, isCorrect) {
+  const choices = document.querySelectorAll(".choice-item");
+  choices.forEach((choice, index) => {
+    if (index === selectedIndex) {
+      choice.style.backgroundColor = isCorrect ? "green" : "red";
+    }
+  });
+}
+
+function updateNextButton(isLastQuestion) {
+  const nextButton = document.getElementById("next-button");
+  nextButton.textContent = isLastQuestion ? "Finish" : "Next";
+}
+
+function restartQuiz() {
+  const resultsContainer = document.getElementById("results-container");
+  resultsContainer.classList.add("hidden");
+}
+
+export {
+  updateQuestionInUI,
+  updateProgress,
+  showFinalScore,
+  highlightAnswer,
+  updateNextButton,
+  restartQuiz,
+};
