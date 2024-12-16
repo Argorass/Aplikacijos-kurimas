@@ -3,7 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App creation</title>
+    <title>Aplication questioneer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- External CSS -->
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>JavaScript Quiz</h1>
+    </header>
+
+    <main>
+      <section id="quiz-container">
+        <div id="question-container">
+          <p id="question-text">Question Text Here</p>
+          <ul id="choices">
+            <!-- Choices will be dynamically added here -->
+          </ul>
+        </div>
+
+        <div id="progress-container">
+          <p id="progress-text">Question 1 of 10</p>
+          <div id="progress-bar"></div>
+          <!-- Optional Progress Bar -->
+        </div>
+
+        <button id="next-button">Next</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Created by Your Name | December 2024</p>
+    </footer>
+
+    <script src="quiz.js"></script>
+    <!-- External JS -->
+  </body>
 </html>
