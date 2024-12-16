@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aplication questioneer</title>
+    <title>Aplication for questioneer</title>
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="quiz.js"></script>
-    <!-- External CSS -->
   </head>
   <body>
     <header>
@@ -14,28 +12,24 @@
     </header>
 
     <main>
-      <section id="quiz-container">
+      <div id="quiz-container">
         <div id="question-container">
-          <p id="question-text">Question Text Here</p>
-          <ul id="choices">
-            <!-- Choices will be dynamically added here -->
-          </ul>
+          <p id="question-text"></p>
+          <ul id="choices"></ul>
         </div>
-
         <div id="progress-container">
-          <p id="progress-text">Question 1 of 10</p>
+          <p id="progress-text"></p>
           <div id="progress-bar"></div>
-          <!-- Optional Progress Bar -->
         </div>
-
         <button id="next-button">Next</button>
-      </section>
+      </div>
     </main>
 
     <footer>
-      <p>Created by Your Name | December 2024</p>
+      <p>Made by Your Name | December 2024</p>
     </footer>
 
-    <!-- External JS -->
+    <!-- Only include one script for the main functionality -->
+    <script type="module" src="main.js"></script>
   </body>
 </html>
