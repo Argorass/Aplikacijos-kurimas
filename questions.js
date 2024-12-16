@@ -12,23 +12,60 @@ const questions = [
     correctAnswerIndex: 0,
   },
   {
-    question: "Which language is used to style web pages?",
-    choices: ["HTML", "CSS", "JavaScript", "Python"],
-    correctAnswerIndex: 1,
-  },
-  {
-    question:
-      "What is the correct syntax for referring to an external script called 'script.js'?",
+    question: "What does CSS stand for?",
     choices: [
-      "<script src='script.js'>",
-      "<script href='script.js'>",
-      "<script name='script.js'>",
-      "<script file='script.js'>",
+      "Cascading Style Sheets",
+      "Computer Style Sheets",
+      "Creative Style Sheets",
+      "Colorful Style Sheets",
     ],
     correctAnswerIndex: 0,
   },
-  // Additional questions can be added here
+  {
+    question: "What does JS stand for?",
+    choices: ["JavaScript", "JavaSource", "JustScript", "JunctionScript"],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "What is the capital of France?",
+    choices: ["Berlin", "Madrid", "Paris", "Rome"],
+    correctAnswerIndex: 2,
+  },
+  {
+    question: "Which planet is closest to the Sun?",
+    choices: ["Earth", "Mercury", "Venus", "Mars"],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Which language is used for web development?",
+    choices: ["Python", "JavaScript", "Ruby", "C++"],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Who developed the theory of relativity?",
+    choices: ["Newton", "Einstein", "Galileo", "Tesla"],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the speed of light?",
+    choices: [
+      "299,792,458 meters per second",
+      "100,000,000 meters per second",
+      "150,000,000 meters per second",
+      "200,000,000 meters per second",
+    ],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "Which company developed the iPhone?",
+    choices: ["Samsung", "Apple", "Google", "Microsoft"],
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "What is the main ingredient in guacamole?",
+    choices: ["Tomato", "Avocado", "Onion", "Garlic"],
+    correctAnswerIndex: 1,
+  },
 ];
 
-// Export the questions data
 export default questions;

@@ -11,24 +11,31 @@ function updateQuestionInUI(question) {
     const choiceItem = document.createElement("li");
     choiceItem.textContent = choice;
     choiceItem.classList.add("choice-item");
+
+    // Use a callback function for handling choice click
     choiceItem.addEventListener("click", () => {
-      // Handle the answer selection here
-      handleChoiceClick(index); // Call this function from main.js
+      // Now calling the function from main.js (which is imported and should be used correctly)
+      if (typeof handleChoiceClick === "function") {
+        handleChoiceClick(index); // This should be passed to main.js
+      }
     });
+
     choicesList.appendChild(choiceItem);
   });
 }
 
+// ui.js
+
 function updateProgress(currentIndex, totalQuestions) {
   const progressText = document.getElementById("progress-text");
-  const progressBar = document.getElementById("progress-bar");
+  const progressBarFilled = document.getElementById("progress-bar-filled");
 
   progressText.textContent = `Question ${
     currentIndex + 1
   } of ${totalQuestions}`;
-  progressBar.innerHTML = `<span style="width: ${
+  progressBarFilled.style.width = `${
     ((currentIndex + 1) / totalQuestions) * 100
-  }%"></span>`;
+  }%`; // Update progress bar width
 }
 
 function showFinalScore(score, totalQuestions) {
@@ -43,7 +50,7 @@ function highlightAnswer(selectedIndex, isCorrect) {
   const choices = document.querySelectorAll(".choice-item");
   choices.forEach((choice, index) => {
     if (index === selectedIndex) {
-      choice.style.backgroundColor = isCorrect ? "green" : "red";
+      choice.style.backgroundColor = isCorrect ? "blue" : "red"; // Highlight blue for correct answers
     }
   });
 }

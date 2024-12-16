@@ -104,6 +104,21 @@ button:hover {
   border-radius: 5px;
 }
 
+/* styles.css or styles.scss */
+/* Progress Bar Styles */
+#progress-bar {
+  height: 10px;
+  background-color: #ddd; /* Light gray background for the progress bar */
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
+#progress-bar-filled {
+  height: 100%;
+  background-color: blue; /* Set the progress bar color to blue */
+  border-radius: 5px;
+}
+
 footer {
   margin-top: 30px;
   font-size: 0.9rem;

@@ -7,8 +7,7 @@ let score = 0;
 
 // Function to load the current question
 function loadQuestion() {
-  const question = questions[currentQuestionIndex];
-  return question;
+  return questions[currentQuestionIndex];
 }
 
 // Function to handle the user's answer
@@ -39,4 +38,5 @@ function nextQuestion() {
   }
 }
 
+// Make sure to export all functions that will be used in other files
 export { loadQuestion, handleAnswer, getScore, nextQuestion };

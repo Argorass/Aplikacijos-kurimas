@@ -129,6 +129,22 @@ button {
   }
 }
 
+/* styles.css or styles.scss */
+
+/* Progress Bar Styles */
+#progress-bar {
+  height: 10px;
+  background-color: #ddd; /* Light gray background for the progress bar */
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
+#progress-bar-filled {
+  height: 100%;
+  background-color: blue; /* Set the progress bar color to blue */
+  border-radius: 5px;
+}
+
 // Footer styling
 footer {
   margin-top: 30px;

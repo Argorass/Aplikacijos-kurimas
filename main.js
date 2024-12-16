@@ -10,14 +10,14 @@ import {
   restartQuiz,
 } from "./ui.js";
 
-const totalQuestions = 3; // Update this if you add more questions
+const totalQuestions = 10; // Update this for 10 questions
 let currentQuestion;
 let selectedAnswer = null; // Local variable to store the selected answer
 let currentQuestionIndex = 0;
 
 function startQuiz() {
   console.log("Starting quiz...");
-  currentQuestion = loadQuestion();
+  currentQuestion = loadQuestion(); // Loads the first question
   console.log(currentQuestion); // Log question data
   updateQuestionInUI(currentQuestion);
   updateProgress(currentQuestionIndex, totalQuestions);
@@ -35,9 +35,10 @@ function handleChoiceClick(selectedIndex) {
   const next = nextQuestion();
   if (next) {
     currentQuestion = next;
+    currentQuestionIndex++; // Move to the next question
     updateQuestionInUI(currentQuestion);
-    updateProgress(currentQuestionIndex, totalQuestions);
-    updateNextButton(currentQuestionIndex === totalQuestions - 1);
+    updateProgress(currentQuestionIndex, totalQuestions); // Update progress bar
+    updateNextButton(currentQuestionIndex === totalQuestions - 1); // Last question will show Finish button
   } else {
     const score = getScore();
     showFinalScore(score, totalQuestions);
